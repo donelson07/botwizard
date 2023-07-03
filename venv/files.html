@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Files</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/upload.css">
+</head>
+<body>
+  <h1 class="verdana">Upload More Files</h1>
+  <p class="verdana">Attach a file to see how many characters are in it</p>
+
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" id="file" required>
+    <button type="submit">Upload</button>
+  </form>
+
+</body>
+</html>
