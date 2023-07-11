@@ -1,56 +1,75 @@
 /* Style the main menu */
 header nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: #f2f2f2;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  header nav ul li {
-    display: inline-block;
-    position: relative;
-  }
-  
-  header nav ul li a {
-    display: block;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #333;
-    font-family: Verdana, sans-serif;
-  }
-  
-  header nav ul li a:hover {
-    background-color: #ddd;
-  }
-  
-  /* Style the submenu options */
-  header nav ul ul {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    display: none;
-    background-color: #fff;
-    z-index: 9999;
-  }
-  
-  header nav ul li:hover > ul {
-    display: block;
-  }
-  
-  header nav ul ul li {
-    display: block;
-  }
-  
-  header nav ul ul li a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: #333;
-    font-family: Verdana, sans-serif;
-  }
-  
-  header nav ul ul li a:hover {
-    color: #ff0000;
-  }
-  
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #ddd;
+}
+
+header nav ul li {
+  display: inline-block;
+  position: relative;
+}
+
+header nav ul li a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+  font-family: Verdana, sans-serif;
+}
+
+header nav ul li a:hover {
+  background-color: #ddd;
+}
+
+/* Style the submenu options */
+header nav ul ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: #fff;
+  z-index: 9999;
+}
+
+header nav ul li:hover > ul {
+  display: flex;
+  flex-direction: column;
+  /* This line will display the submenu options horizontally */
+  flex-direction: row;
+  /* This line will ensure that the submenu items wrap to the next line if they do not fit in the current line */
+  flex-wrap: wrap;
+}
+
+header nav ul ul li {
+  display: inline-block;
+}
+
+header nav ul ul li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  font-family: Verdana, sans-serif;
+}
+
+header nav ul ul li a:hover {
+  color: #ff0000;
+}
+
+/* Specific styles for the submenu options */
+.submenu-nav li a {
+  font-family: Verdana, sans-serif;
+}
+
+/* Add spacing between submenu options */
+.submenu-nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+.submenu-nav li {
+  margin-right: 10px;
+}
