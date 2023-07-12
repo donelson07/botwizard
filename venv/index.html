@@ -16,12 +16,6 @@
       }
     </style>
     <script>
-      function loadSubmenuPage(pageURL) {
-        var submenuPagesSection = document.getElementById('submenuPagesSection');
-        submenuPagesSection.innerHTML = '<iframe src="' + pageURL + '"></iframe>';
-        submenuPagesSection.style.display = 'block';
-      }
-
       function toggleSubMenu() {
         var submenuSection = document.getElementById('submenuSection');
         var submenuPagesSection = document.getElementById('submenuPagesSection');
@@ -29,9 +23,11 @@
         submenuPagesSection.style.display = submenuPagesSection.style.display === 'none' ? 'block' : 'none';
       }
 
-      document.getElementById('manageSourcesLink').addEventListener('click', function() {
-        toggleSubMenu();
-      });
+      function loadSubmenuPage(pageURL) {
+        var submenuPagesSection = document.getElementById('submenuPagesSection');
+        submenuPagesSection.innerHTML = '<iframe src="' + pageURL + '"></iframe>';
+        submenuPagesSection.style.display = 'block';
+      }
     </script>
   </head>
   <body>
@@ -43,7 +39,7 @@
             <li><a href="#">Settings</a></li>
             <li><a href="#">Dashboard</a></li>
             <li class="dropdown">
-              <a href="javascript:void(0);" id="manageSourcesLink" onclick="toggleSubMenu()">Manage Sources</a>
+              <a href="javascript:void(0);" onclick="toggleSubMenu()">Manage Sources</a>
             </li>
             <li><a href="#">Embed on Website</a></li>
             <li><a href="#">Integrations</a></li>
@@ -54,15 +50,22 @@
     </section>
 
     <section id="submenuSection" class="submenu-section">
-      <nav class="submenu-nav" style="display: flex; flex-direction: row;">
-        <div class="flexbox-container">
-          <a href="files.html">Files</a>
-          <a href="text.html">Text</a>
-          <a href="website.html">Website</a>
-        </div>
+      <nav class="submenu-nav">
+        <ul>
+          <li><a href="javascript:loadSubmenuPage('files.html')">Files</a></li>
+          <li><a href="javascript:loadSubmenuPage('text.html')">Text</a></li>
+          <li><a href="javascript:loadSubmenuPage('website.html')">Website</a></li>
+        </ul>
       </nav>
     </section>
 
     <section id="submenuPagesSection" class="submenu-section"></section>
+
+    <script>
+      function hideSubMenu() {
+        var submenuSection = document.getElementById('submenuSection');
+        submenuSection.style.display = 'none';
+      }
+    </script>
   </body>
 </html>
