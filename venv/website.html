@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>Website Entry</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/website.css">
 </head>
 <body>
@@ -11,7 +10,7 @@
   <label for="website-url" class="verdana">Website URL:</label>
   <input type="text" id="website-url" class="textbox">
   <p class="verdana description">This will crawl all the links starting with the URL (not including files on the website).</p>
-  <button type="button" class="button">Fetch links</button>
+  <button type="button" class="button" onclick="validateURLInput()">Fetch links</button>
 
   <div class="divider">
     <span class="or-text">OR</span>
@@ -21,7 +20,47 @@
   <input type="text" id="sitemap-file" class="textbox">
   <button type="button" class="button">Load Sitemap</button>
 
-  <!-- Add any additional elements or form components as needed -->
+  <section id="linksSection"></section>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      function validateURL(url) {
+        const regex = /^(https?:\/\/)?([\w\-]+\.){1,}[a-zA-Z]{2,6}\/?([\w\-\.~:\/?#\[\]@!$&'()*+,;=]*)$/;
+        return regex.test(url);
+      }
+
+      function fetchLinks(url) {
+        const linksSection = document.getElementById("linksSection");
+        linksSection.innerHTML = "<h2 class='verdana'>Related Links:</h2>";
+        linksSection.innerHTML += "<ul class='verdana'>";
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            const links = JSON.parse(xhr.responseText);
+
+            links.forEach(function(link) {
+              linksSection.innerHTML += "<li>" + link + "</li>";
+            });
+          }
+        };
+
+        xhr.send();
+      }
+
+      function validateURLInput() {
+        const websiteURL = document.getElementById("website-url").value;
+        if (!validateURL(websiteURL)) {
+          alert("The URL format is not valid.");
+        } else {
+          alert("The URL format is valid. Fetching links...");
+          fetchLinks(websiteURL);
+        }
+      }
+
+      document.getElementById("website-url").addEventListener("change", validateURLInput);
+    });
+  </script>
 </body>
 </html>
