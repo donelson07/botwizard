@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chatbot Training Page</title>
+  <link rel="stylesheet" href="training.css">
+  <style>
+    .verdana {
+      font-family: Verdana, Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="verdana">Chatbot Training Page</h1>
+
+  <p class="verdana">Enter the information you would like to train your chatbot:</p>
+
+  <form id="trainingForm">
+    <textarea id="trainingText" rows="10" cols="50" class="verdana"></textarea>
+    <br>
+    <button type="submit" class="verdana">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("trainingForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      var trainingText = document.getElementById("trainingText").value;
+      
+      // Perform actions with the training text here
+      
+      // For example, display an alert with the training text
+      alert("Training text: " + trainingText);
+      
+      // Reset the form
+      document.getElementById("trainingForm").reset();
+    });
+  </script>
+</body>
+</html>
